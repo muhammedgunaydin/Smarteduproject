@@ -16,8 +16,10 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.6.0",
     "ejs": "^3.0.2",
     "express": "^4.17.3",
+    "express-session": "^1.17.2",
     "mongoose": "^6.3.0",
     "slugify": "^1.6.5"
   },

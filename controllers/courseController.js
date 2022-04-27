@@ -7,11 +7,7 @@ exports.createCourse = async (req, res) => {
     try {
         const courses = await Course.create(req.body)
 
-        res.status(201).json({
-            status: 'success',
-            courses
-
-        })
+        res.status(201).redirect('/courses')
 
     } catch (error) {
         res.status(400).json({
@@ -21,6 +17,8 @@ exports.createCourse = async (req, res) => {
     }
 
 }
+
+
 
 exports.getAllCourses = async (req, res) => {
 
@@ -36,7 +34,7 @@ exports.getAllCourses = async (req, res) => {
             filter = { category: category._id }
         }
 
-        const courses = await Course.find(filter)
+        const courses = await Course.find(filter).sort('-createdAt')
 
         const categories = await Category.find()
 

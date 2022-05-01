@@ -1,3 +1,6 @@
+const nodemailer = require("nodemailer");
+
+
 exports.getIndexPage = (req, res) => {
     console.log(req.session.userID)
     res.status(200).render('index', {
@@ -21,4 +24,26 @@ exports.getLoginPage = (req, res) => {
     res.status(200).render('login', {
         page_name: "login"
     })
+}
+
+exports.getContactPage = (req, res) => {
+    res.status(200).render('contact', {
+        page_name: "contact"
+    })
+}
+
+exports.sendEmail = async (req, res) => {
+
+    try {
+
+        const outputMessage = console.log(req.body)
+
+        req.flash("sucsess", "We received your message.")
+        res.status(200).redirect('contact')
+    }
+    catch (err) {
+        req.flash("error", "We cannot received your message.")
+        res.status(200).redirect('contact')
+    } 
+
 }
